@@ -3,6 +3,7 @@
 require 'redcarpet'
 
 if __FILE__ == $0
+  # TODO: Lunchtime refactor (to the max!)
   renderer = Redcarpet::Render::HTML.new(render_options = {prettify: true})
   markdown  = Redcarpet::Markdown.new(renderer, extensions = {})
 
