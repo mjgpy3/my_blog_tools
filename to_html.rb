@@ -16,6 +16,10 @@ if __FILE__ == $0
   use_pre = true
 
   file_text.split("\n").each do |line|
+    while line.match(/\[(.+)\]\{(.+)\}/)
+      matches = line.match(/\[(.+)\]\{(.+)\}/).to_a
+      line = line.sub(matches[0], "<a href=\"#{matches[2]}\">#{matches[1]}</a>")
+    end
     if line.include? '```'
       preproc_text << line.sub(/```/, (use_pre ? '<pre class="prettyprint">' : '</pre>')) + "\n"
       use_pre = !use_pre
